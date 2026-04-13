@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhiram's Annaprashan — Design 2</title>
+  <meta name="theme-color" content="#1A1A1A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ivory: #FAFAF5; --charcoal: #1A1A1A; --terracotta: #C4522A; --gold: #B8922E; --warm-gray: #8C8279; --light-tan: #F2EDE4; --deep-brown: #2C1810; --focus-ring: 0 0 0 3px rgba(196,82,42,0.5); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--charcoal); color: var(--charcoal); overflow-x: hidden; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip-link { position: absolute; top: -100px; left: 16px; background: var(--terracotta); color: white; padding: 8px 16px; border-radius: 0 0 8px 8px; font-size: 14px; font-weight: 600; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+    .skip-link:focus { top: 0; outline: var(--focus-ring); }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (prefers-reduced-motion: reduce) { .left-panel *, .right-panel *, .modal { animation: none !important; } }
+
+    .page { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+    @media (max-width: 768px) { .page { grid-template-columns: 1fr; } .left-panel { min-height: 60vh; } }
+
+    .left-panel { position: relative; background: var(--charcoal); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+    .left-bg-pattern { position: absolute; inset: 0; background: radial-gradient(circle at 30% 40%, rgba(196,82,42,0.25) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(184,146,46,0.2) 0%, transparent 50%); }
+    .left-content { position: relative; z-index: 2; text-align: center; padding: 40px; color: white; }
+    .design-badge { display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 32px; }
+    .om-symbol { font-family: 'Noto Serif Devanagari', serif; font-size: 56px; color: var(--gold); line-height: 1; margin-bottom: 20px; animation: fadeInDown 1s ease-out; }
+    .baby-photo { width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, var(--terracotta), var(--gold)); margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; font-size: 72px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); animation: fadeInUp 1s ease-out 0.2s both; }
+    .ceremony-label { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; animation: fadeInDown 1s ease-out 0.3s both; }
+    .baby-name { font-family: 'Playfair Display', serif; font-size: clamp(48px, 6vw, 72px); font-weight: 900; color: white; line-height: 1.05; margin-bottom: 8px; animation: fadeInUp 1s ease-out 0.4s both; text-wrap: balance; }
+    .ceremony-sub { font-size: 15px; color: rgba(255,255,255,0.6); font-style: italic; margin-bottom: 40px; animation: fadeInUp 1s ease-out 0.5s both; }
+    .left-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 40px; animation: fadeIn 1s ease-out 0.6s both; }
+    .parents-left { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.8; animation: fadeInUp 1s ease-out 0.7s both; }
+    .parents-left strong { display: block; font-family: 'Playfair Display', serif; font-size: 18px; color: white; font-weight: 600; }
+
+    .right-panel { background: var(--ivory); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 48px; position: relative; }
+    .right-inner { max-width: 420px; width: 100%; }
+    .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--terracotta); font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(196,82,42,0.2); }
+
+    .weather-strip { display: none; }
+
+    .info-block { background: white; border-radius: 16px; padding: 28px 32px; margin-bottom: 20px; box-shadow: 0 2px 20px rgba(26,26,26,0.06); border-left: 3px solid var(--terracotta); animation: fadeInUp 1s ease-out 0.8s both; }
+    .info-row { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-row:first-child { padding-top: 0; }
+    .info-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .info-text .info-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--warm-gray); margin-bottom: 2px; font-weight: 600; }
+    .info-text .info-value { font-size: 16px; font-weight: 600; color: var(--deep-brown); }
+    .info-text .info-sub { font-size: 13px; color: var(--warm-gray); }
+
+    .rituals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .ritual-chip { background: var(--light-tan); border-radius: 10px; padding: 12px 16px; text-align: center; font-size: 13px; font-weight: 600; color: var(--deep-brown); }
+    .ritual-chip .emoji { display: block; font-size: 22px; margin-bottom: 4px; }
+
+    .rsvp-section { margin-top: 32px; }
+    .rsvp-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; background: var(--terracotta); color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; border: 2px solid transparent; border-radius: 12px; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(196,82,42,0.3); touch-action: manipulation; animation: fadeInUp 1s ease-out 0.9s both; }
+    .rsvp-btn:hover { background: #b3451f; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,82,42,0.4); }
+    .rsvp-btn:focus-visible { outline: none; box-shadow: 0 4px 20px rgba(196,82,42,0.3), var(--focus-ring); border-color: rgba(255,255,255,0.4); }
+    .rsvp-btn:active { transform: translateY(0); }
+    .footer-note { text-align: center; margin-top: 16px; font-size: 12px; color: var(--warm-gray); line-height: 1.5; animation: fadeInUp 1s ease-out 1s both; }
+
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,26,26,0.7); backdrop-filter: blur(6px); z-index: 100; align-items: center; justify-content: center; padding: 20px; overscroll-behavior: contain; }
+    .modal-overlay.active { display: flex; }
+    .modal { background: white; border-radius: 24px; padding: 44px; max-width: 440px; width: 100%; position: relative; box-shadow: 0 30px 80px rgba(26,26,26,0.3); animation: slideUp 0.3s ease-out; }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: var(--light-tan); border: none; font-size: 20px; cursor: pointer; color: var(--warm-gray); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; touch-action: manipulation; }
+    .modal-close:hover { background: #e0d9ce; color: var(--charcoal); }
+    .modal-close:focus-visible { outline: none; background: #e0d9ce; box-shadow: var(--focus-ring); }
+    .modal h2 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--charcoal); margin-bottom: 24px; font-weight: 700; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 6px; }
+    .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 2px solid #E8E2DA; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--charcoal); background: var(--ivory); outline: none; transition: border-color 0.2s, box-shadow 0.2s; touch-action: manipulation; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--terracotta); box-shadow: var(--focus-ring); }
+    .form-group input::placeholder { color: #b0a89e; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .submit-btn { width: 100%; padding: 15px; background: var(--charcoal); color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border: 2px solid transparent; border-radius: 10px; cursor: pointer; margin-top: 8px; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; touch-action: manipulation; }
+    .submit-btn:hover:not(:disabled) { background: #2d2d2d; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,26,26,0.3); }
+    .submit-btn:focus-visible { outline: none; background: #2d2d2d; box-shadow: var(--focus-ring); border-color: var(--terracotta); }
+    .submit-btn:active:not(:disabled) { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .success-msg { text-align: center; padding: 16px 0; display: none; }
+    .success-msg.show { display: block; }
+    .success-msg .emoji { font-size: 52px; margin-bottom: 12px; }
+    .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--charcoal); margin-bottom: 8px; }
+    .success-msg p { font-size: 14px; color: var(--warm-gray); }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content" class="page">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel" aria-hidden="true">
+      <div class="left-bg-pattern"></div>
+      <div class="left-content">
+        <div class="design-badge">Design 2 — Split Layout</div>
+        <div class="om-symbol">ॐ</div>
+        <div class="baby-photo" aria-label="Baby photo placeholder"></div>
+        <div class="ceremony-label">Annaprashan Sanskar</div>
+        <h1 class="baby-name">Abhiram</h1>
+        <p class="ceremony-sub">First Grain Feeding Ceremony</p>
+        <div class="left-divider"></div>
+        <div class="parents-left">
+          <strong>Shreesh &amp; Garima</strong>
+          Request the pleasure of your company
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+      <div class="right-inner">
+        <div class="section-label">Ceremony Details</div>
+        <div class="info-block">
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">📅</div>
+            <div class="info-text">
+              <div class="info-label">Date</div>
+              <div class="info-value">Sunday, April 26, 2026</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon" id="wIcon" aria-hidden="true">🌥️</div>
+            <div class="info-text">
+              <div class="info-label">Weather — Apr 26, Bothell</div>
+              <div class="info-value" id="wCondition">Loading…</div>
+              <div class="info-sub" id="wTemp"></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">🕙</div>
+            <div class="info-text">
+              <div class="info-label">Start Time</div>
+              <div class="info-value">10:00 AM</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">📍</div>
+            <div class="info-text">
+              <div class="info-label">Venue</div>
+              <div class="info-value">Home</div>
+              <div class="info-sub">2011 239th PL SE, Bothell, WA</div>
+            </div>
+          </div>
+        </div>
+        <div class="info-block" style="border-left-color: var(--gold);">
+          <div class="rituals-grid">
+            <div class="ritual-chip"><span class="emoji" aria-hidden="true">🙏</span>Ganesh Puja</div>
+            <div class="ritual-chip"><span class="emoji" aria-hidden="true">📖</span>Satyanarayan Katha</div>
+            <div class="ritual-chip"><span class="emoji" aria-hidden="true">🔥</span>Havan</div>
+            <div class="ritual-chip"><span class="emoji" aria-hidden="true">🍚</span>Annaprashan</div>
+            <div class="ritual-chip"><span class="emoji" aria-hidden="true">🍛</span>Pandit Bhoj</div>
+            <div class="ritual-chip"><span class="emoji" aria-hidden="true">🥘</span>Lunch</div>
+          </div>
+        </div>
+
+        <div class="rsvp-section">
+          <button class="rsvp-btn" onclick="openModal()" onkeydown="if(event.key==='Enter'||event.key===' ')openModal()" aria-label="Open RSVP form">🙏&nbsp; RSVP Now</button>
+          <p class="footer-note">Your presence is requested to bless<br>little Abhiram on this sacred milestone</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="closeModalOnOverlay(event)" onkeydown="if(event.key==='Escape')closeModal()">
+    <div class="modal" role="document">
+      <button class="modal-close" onclick="closeModal()" onkeydown="if(event.key==='Enter')closeModal()" aria-label="Close dialog">✕</button>
+      <div id="rsvpForm">
+        <h2 id="modal-title">RSVP</h2>
+        <div class="form-group"><label for="guestName">Your Name</label><input type="text" id="guestName" name="guestName" placeholder="Full name" autocomplete="name" spellcheck="false" required autofocus></div>
+        <div class="form-group"><label for="attendStatus">Will You Attend?</label><select id="attendStatus" name="attendStatus" autocomplete="off"><option value="yes">Joyfully Accept</option><option value="no">Regretfully Decline</option></select></div>
+        <div class="form-row">
+          <div class="form-group"><label for="guestCount">Total Guests</label><select id="guestCount" name="guestCount" autocomplete="off"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5+</option></select></div>
+          <div class="form-group"><label for="dietary">Dietary</label><select id="dietary" name="dietary" autocomplete="off"><option value="Vegetarian">Vegetarian</option><option value="Non-Vegetarian">Non-Veg</option><option value="Both">Both</option></select></div>
+        </div>
+        <div class="form-group"><label for="message">Message for Abhiram</label><input type="text" id="message" name="message" placeholder="Optional blessing…" autocomplete="off"></div>
+        <button class="submit-btn" id="submitBtn" onclick="submitRSVP()" onkeydown="if(event.key==='Enter')submitRSVP()">Submit RSVP</button>
+      </div>
+      <div class="success-msg" id="successMsg" aria-live="polite">
+        <div class="emoji" aria-hidden="true">🙏</div>
+        <h3>Thank you!</h3>
+        <p>Your RSVP has been received.<br>See you on April 26th!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchWeather() {
+      try {
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=47.81&longitude=-122.20&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&start_date=2026-04-26&end_date=2026-04-26&temperature_unit=fahrenheit&precipitation_unit=inch');
+        const data = await res.json();
+        const code = data.daily.weathercode[0];
+        const high = Math.round(data.daily.temperature_2m_max[0]);
+        const low = Math.round(data.daily.temperature_2m_min[0]);
+        const precip = data.daily.precipitation_sum[0];
+        const wmoMap = { 0: { label: 'Clear Sky', icon: '☀️' }, 1: { label: 'Mainly Clear', icon: '🌤️' }, 2: { label: 'Partly Cloudy', icon: '⛅' }, 3: { label: 'Overcast', icon: '🌥️' }, 45: { label: 'Foggy', icon: '🌫️' }, 48: { label: 'Icy Fog', icon: '🌫️' }, 51: { label: 'Light Drizzle', icon: '🌦️' }, 53: { label: 'Drizzle', icon: '🌦️' }, 55: { label: 'Heavy Drizzle', icon: '🌧️' }, 61: { label: 'Light Rain', icon: '🌧️' }, 63: { label: 'Rain', icon: '🌧️' }, 65: { label: 'Heavy Rain', icon: '🌧️' }, 71: { label: 'Light Snow', icon: '🌨️' }, 73: { label: 'Snow', icon: '🌨️' }, 75: { label: 'Heavy Snow', icon: '❄️' }, 80: { label: 'Rain Showers', icon: '🌦️' }, 81: { label: 'Rain Showers', icon: '🌦️' }, 82: { label: 'Heavy Showers', icon: '🌧️' }, 95: { label: 'Thunderstorm', icon: '⛈️' }, 96: { label: 'Thunderstorm', icon: '⛈️' }, 99: { label: 'Severe Thunderstorm', icon: '⛈️' } };
+        const info = wmoMap[code] || { label: 'Varied', icon: '🌤️' };
+        document.getElementById('wIcon').textContent = info.icon;
+        document.getElementById('wCondition').textContent = info.label;
+        document.getElementById('wTemp').textContent = `${high}°F / ${low}°F · ${precip === 0 ? 'No rain' : precip + '" rain'}`;
+      } catch (e) { document.getElementById('wCondition').textContent = 'Weather unavailable'; }
+    }
+    fetchWeather();
+
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; document.getElementById('guestName').focus(); }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+    function closeModalOnOverlay(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+    async function submitRSVP() {
+      const name = document.getElementById('guestName').value.trim();
+      if (!name) { document.getElementById('guestName').focus(); return; }
+      const attending = document.getElementById('attendStatus').value;
+      const guests = document.getElementById('guestCount').value;
+      const dietary = document.getElementById('dietary').value;
+      const message = document.getElementById('message').value.trim();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending…'; btn.disabled = true;
+      try { await fetch('/api/rsvp', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, attending, guests, dietary, message }) }); }
+      catch (e) { const waText = encodeURIComponent(`RSVP for Abhiram's Annaprashan\n\nName: ${name}\nAttending: ${attending === 'yes' ? '✅ Accept' : '❌ Decline'}\nGuests: ${guests}\nDietary: ${dietary}\nMessage: ${message || 'None'}`); window.open(`https://wa.me/14254996281?text=${waText}`, '_blank'); }
+      document.getElementById('rsvpForm').style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+      setTimeout(closeModal, 3000);
+    }
+  </script>
+</body>
+</html>

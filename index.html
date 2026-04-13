@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhiram's Annaprashan Sanskar</title>
+  <meta name="theme-color" content="#7B1E2B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito:wght@400;600;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #FF6B00;
+      --gold: #D4A843;
+      --deep-maroon: #7B1E2B;
+      --cream: #FFF8EE;
+      --warm-brown: #3D2314;
+      --soft-peach: #FFF0E0;
+      --text-dark: #2C1810;
+      --text-muted: #6B4C3B;
+      --focus-ring: 0 0 0 3px rgba(255,107,0,0.45);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Nunito', sans-serif; background: #FFF8EE; color: var(--text-dark); overflow-x: hidden; }
+
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    .rangoli-top, .rangoli-bottom { position: fixed; left: 0; right: 0; height: 120px; background-repeat: repeat-x; background-size: 180px 120px; pointer-events: none; z-index: 1; }
+    .rangoli-top { top: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 120'%3E%3Ccircle cx='90' cy='60' r='30' fill='none' stroke='%23D4A843' stroke-width='1.5'/%3E%3Ccircle cx='90' cy='60' r='15' fill='none' stroke='%23FF6B00' stroke-width='1'/%3E%3Ccircle cx='90' cy='60' r='4' fill='%23FF6B00'/%3E%3Cpath d='M90 30 L102 47 L90 67 L78 47 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Cpath d='M90 90 L102 73 L90 53 L78 73 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Cpath d='M60 60 L77 47 L97 60 L77 73 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Cpath d='M120 60 L103 47 L83 60 L103 73 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Ccircle cx='90' cy='60' r='45' fill='none' stroke='%23D4A843' stroke-width='0.5' stroke-dasharray='4 4'/%3E%3C/svg%3E"); opacity: 0.7; }
+    .rangoli-bottom { bottom: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 120'%3E%3Ccircle cx='90' cy='60' r='30' fill='none' stroke='%23D4A843' stroke-width='1.5'/%3E%3Ccircle cx='90' cy='60' r='15' fill='none' stroke='%23FF6B00' stroke-width='1'/%3E%3Ccircle cx='90' cy='60' r='4' fill='%23FF6B00'/%3E%3Cpath d='M90 30 L102 47 L90 67 L78 47 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Cpath d='M90 90 L102 73 L90 53 L78 73 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Cpath d='M60 60 L77 47 L97 60 L77 73 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Cpath d='M120 60 L103 47 L83 60 L103 73 Z' fill='none' stroke='%23D4A843' stroke-width='1'/%3E%3Ccircle cx='90' cy='60' r='45' fill='none' stroke='%23D4A843' stroke-width='0.5' stroke-dasharray='4 4'/%3E%3C/svg%3E"); opacity: 0.7; }
+
+    .skip-link { position: absolute; top: -100px; left: 16px; background: var(--deep-maroon); color: var(--gold); padding: 8px 16px; border-radius: 0 0 8px 8px; font-size: 14px; font-weight: 600; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+    .skip-link:focus { top: 0; outline: var(--focus-ring); }
+
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; position: relative; background: linear-gradient(180deg, #FFF8EE 0%, #FFF0E0 100%); }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 20%, rgba(255,107,0,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(212,168,67,0.08) 0%, transparent 50%); pointer-events: none; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    @media (prefers-reduced-motion: reduce) { .om-symbol, .sanskrit-line, .invite-label, .baby-name, .ceremony-name, .ceremony-subtitle, .divider, .details-card, .border-accent, .parents, .footer, .modal, .weather-tile { animation: none !important; } }
+
+    .om-symbol { font-family: 'Noto Serif Devanagari', serif; font-size: 72px; color: var(--saffron); line-height: 1; margin-bottom: 8px; animation: fadeInDown 1s ease-out; }
+    .sanskrit-line { font-family: 'Noto Serif Devanagari', serif; font-size: 14px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; animation: fadeInDown 1s ease-out 0.2s both; }
+    .invite-label { display: inline-block; background: var(--deep-maroon); color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; padding: 6px 20px; border-radius: 2px; margin-bottom: 28px; animation: fadeInDown 1s ease-out 0.3s both; }
+    .baby-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(64px, 12vw, 110px); font-weight: 700; color: var(--deep-maroon); line-height: 1; margin-bottom: 4px; animation: fadeInUp 1s ease-out 0.4s both; text-wrap: balance; }
+    .ceremony-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 400; color: var(--saffron); margin-bottom: 12px; font-style: italic; animation: fadeInUp 1s ease-out 0.5s both; }
+    .ceremony-subtitle { font-size: 15px; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 48px; animation: fadeInUp 1s ease-out 0.6s both; }
+    .divider { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 48px; animation: fadeIn 1s ease-out 0.7s both; }
+
+    /* Weather tile */
+    .weather-tile {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: white; border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 2px 16px rgba(61,35,20,0.08);
+      border: 1px solid rgba(212,168,67,0.2);
+      margin-bottom: 28px;
+      animation: fadeInUp 1s ease-out 0.65s both;
+    }
+    .weather-icon { font-size: 24px; }
+    .weather-info { text-align: left; }
+    .weather-condition { font-size: 13px; font-weight: 600; color: var(--warm-brown); }
+    .weather-temp { font-size: 12px; color: var(--text-muted); }
+    .weather-meta { font-size: 11px; color: var(--text-muted); display: flex; gap: 8px; align-items: center; }
+    .weather-meta span { display: flex; align-items: center; gap: 3px; }
+    .weather-loading { font-size: 12px; color: var(--text-muted); }
+
+    .details-card { background: white; border-radius: 16px; padding: 36px 40px; max-width: 560px; width: 100%; box-shadow: 0 4px 40px rgba(61,35,20,0.08); border: 1px solid rgba(212,168,67,0.2); position: relative; overflow: hidden; animation: fadeInUp 1s ease-out 0.8s both; }
+    .details-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--saffron), var(--gold), var(--saffron)); }
+    .detail-row { display: flex; align-items: flex-start; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(212,168,67,0.12); }
+    .detail-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .detail-row:first-child { padding-top: 0; }
+    .detail-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--soft-peach); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .detail-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--saffron); margin-bottom: 2px; }
+    .detail-value { font-size: 16px; font-weight: 600; color: var(--warm-brown); line-height: 1.4; }
+    .detail-value.light { font-weight: 400; color: var(--text-muted); font-size: 14px; }
+    .rituals-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .ritual-tag { background: var(--soft-peach); border-radius: 50px; padding: 3px 10px; font-size: 12px; font-weight: 600; color: var(--warm-brown); }
+
+    .weather-tile { display: none; }
+
+    .parents { margin-top: 48px; animation: fadeInUp 1s ease-out 1s both; }
+    .parents-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .parents-names { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--warm-brown); margin-bottom: 4px; }
+    .border-accent { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 20px 0; animation: fadeIn 1s ease-out 0.9s both; }
+    .border-accent span { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .border-accent span:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+    .border-accent .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--saffron); }
+
+    .footer { text-align: center; padding: 32px 20px 48px; animation: fadeInUp 1s ease-out 1.1s both; }
+    .rsvp-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--deep-maroon); color: var(--gold); font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 36px; border-radius: 50px; border: 2px solid transparent; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; box-shadow: 0 4px 20px rgba(123,30,43,0.3); touch-action: manipulation; }
+    .rsvp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(123,30,43,0.4); }
+    .rsvp-btn:focus-visible { outline: none; box-shadow: 0 4px 20px rgba(123,30,43,0.3), var(--focus-ring); border-color: var(--saffron); }
+    .rsvp-btn:active { transform: translateY(0); }
+    .footer-note { margin-top: 20px; font-size: 12px; color: var(--text-muted); font-style: italic; line-height: 1.6; }
+
+    @media (max-width: 600px) { .details-card { padding: 28px 24px; border-radius: 12px; } }
+
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(44,24,16,0.6); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 20px; overscroll-behavior: contain; }
+    .modal-overlay.active { display: flex; }
+    .modal { background: white; border-radius: 20px; padding: 40px; max-width: 440px; width: 100%; position: relative; box-shadow: 0 20px 60px rgba(44,24,16,0.3); animation: fadeInUp 0.3s ease-out; }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; touch-action: manipulation; }
+    .modal-close:hover { background: var(--soft-peach); color: var(--text-dark); }
+    .modal-close:focus-visible { outline: none; background: var(--soft-peach); box-shadow: var(--focus-ring); }
+    .modal h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--deep-maroon); margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 2px solid rgba(212,168,67,0.3); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--text-dark); background: #FFF8EE; outline: none; transition: border-color 0.2s, box-shadow 0.2s; touch-action: manipulation; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--saffron); box-shadow: var(--focus-ring); }
+    .form-group input::placeholder { color: #b0998a; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .submit-btn { width: 100%; padding: 14px; background: var(--deep-maroon); color: var(--gold); font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border: 2px solid transparent; border-radius: 10px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(123,30,43,0.25); touch-action: manipulation; }
+    .submit-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(123,30,43,0.35); }
+    .submit-btn:focus-visible { outline: none; box-shadow: 0 4px 16px rgba(123,30,43,0.25), var(--focus-ring); border-color: var(--saffron); }
+    .submit-btn:active:not(:disabled) { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .success-msg { text-align: center; padding: 20px 0; display: none; }
+    .success-msg.show { display: block; }
+    .success-msg .emoji { font-size: 48px; margin-bottom: 12px; }
+    .success-msg h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--deep-maroon); margin-bottom: 8px; }
+    .success-msg p { font-size: 14px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="rangoli-top" aria-hidden="true"></div>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="om-symbol" aria-hidden="true">ॐ</div>
+      <div class="sanskrit-line" aria-hidden="true">॥ श्री गणेशाय नमः ॥</div>
+      <div class="invite-label">You're Invited</div>
+      <h1 class="baby-name">Abhiram</h1>
+      <p class="ceremony-name">Annaprashan Sanskar</p>
+      <p class="ceremony-subtitle">First Grain Feeding Ceremony</p>
+
+      <div class="divider" aria-hidden="true"></div>
+      <div class="details-card">
+        <div class="detail-row">
+          <div class="detail-icon" aria-hidden="true">📅</div>
+          <div class="detail-text">
+            <div class="detail-label">Date</div>
+            <div class="detail-value">Sunday, April 26, 2026</div>
+          </div>
+        </div>
+        <div class="detail-row" id="weatherRow">
+          <div class="detail-icon" id="weatherIconCell" aria-hidden="true">🌥️</div>
+          <div class="detail-text">
+            <div class="detail-label">Weather — Apr 26, Bothell</div>
+            <div class="detail-value" id="weatherCondition">Loading weather…</div>
+            <div class="detail-value light" id="weatherTempRow"></div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon" aria-hidden="true">🕙</div>
+          <div class="detail-text">
+            <div class="detail-label">Start Time</div>
+            <div class="detail-value">10:00 AM</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon" aria-hidden="true">📍</div>
+          <div class="detail-text">
+            <div class="detail-label">Venue</div>
+            <div class="detail-value">Home</div>
+            <div class="detail-value light">2011 239th PL SE, Bothell, WA</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon" aria-hidden="true">🪔</div>
+          <div class="detail-text">
+            <div class="detail-label">Rituals</div>
+            <div class="rituals-list">
+              <span class="ritual-tag">🙏 Ganesh Puja</span>
+              <span class="ritual-tag">📖 Satyanarayan Katha</span>
+              <span class="ritual-tag">🔥 Havan</span>
+              <span class="ritual-tag">🍚 Annaprashan</span>
+              <span class="ritual-tag">🍛 Pandit Bhoj</span>
+              <span class="ritual-tag">🥘 Lunch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-accent" aria-hidden="true"><span></span><div class="dot"></div><span></span></div>
+      <div class="parents">
+        <div class="parents-label">Request the Pleasure of Your Company</div>
+        <div class="parents-names">Garima, Shreesh &amp; Shaurya</div>
+      </div>
+      <div class="footer">
+        <button class="rsvp-btn" onclick="openModal()" onkeydown="if(event.key==='Enter'||event.key===' ')openModal()" aria-label="Open RSVP form">🙏&nbsp; RSVP</button>
+        <p class="footer-note">"May the Lord Ganesha remove all obstacles<br>and bless Abhiram with a life of abundance."</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="rangoli-bottom" aria-hidden="true"></div>
+
+  <!-- RSVP MODAL -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="closeModalOnOverlay(event)" onkeydown="if(event.key==='Escape')closeModal()">
+    <div class="modal" role="document">
+      <button class="modal-close" onclick="closeModal()" onkeydown="if(event.key==='Enter')closeModal()" aria-label="Close dialog">✕</button>
+      <div id="rsvpForm">
+        <h2 id="modal-title">RSVP</h2>
+        <div class="form-group">
+          <label for="guestName">Your Name</label>
+          <input type="text" id="guestName" name="guestName" placeholder="Enter your full name" autocomplete="name" spellcheck="false" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="attendStatus">Will You Attend?</label>
+          <select id="attendStatus" name="attendStatus" autocomplete="off">
+            <option value="yes">Joyfully Accept</option>
+            <option value="no">Regretfully Decline</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guestCount">Total Guests</label>
+            <select id="guestCount" name="guestCount" autocomplete="off">
+              <option value="1">1 Person</option><option value="2">2 People</option><option value="3">3 People</option>
+              <option value="4">4 People</option><option value="5">5+ People</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dietary">Dietary</label>
+            <select id="dietary" name="dietary" autocomplete="off">
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Non-Vegetarian">Non-Vegetarian</option>
+              <option value="Both">Both</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message for Abhiram <span style="font-weight:400;text-transform:none;font-size:11px;">(optional)</span></label>
+          <input type="text" id="message" name="message" placeholder="Wish the little one…" autocomplete="off">
+        </div>
+        <button class="submit-btn" id="submitBtn" onclick="submitRSVP()" onkeydown="if(event.key==='Enter')submitRSVP()">Send RSVP</button>
+      </div>
+      <div class="success-msg" id="successMsg" aria-live="polite">
+        <div class="emoji" aria-hidden="true">🙏</div>
+        <h3>Thank you!</h3>
+        <p>Your RSVP has been received.<br>See you on April 26th!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchWeather() {
+      try {
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=47.81&longitude=-122.20&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&start_date=2026-04-26&end_date=2026-04-26&temperature_unit=fahrenheit&precipitation_unit=inch');
+        const data = await res.json();
+        const code = data.daily.weathercode[0];
+        const high = Math.round(data.daily.temperature_2m_max[0]);
+        const low = Math.round(data.daily.temperature_2m_min[0]);
+        const precip = data.daily.precipitation_sum[0];
+        const wmoMap = { 0: { label: 'Clear Sky', icon: '☀️' }, 1: { label: 'Mainly Clear', icon: '🌤️' }, 2: { label: 'Partly Cloudy', icon: '⛅' }, 3: { label: 'Overcast', icon: '🌥️' }, 45: { label: 'Foggy', icon: '🌫️' }, 48: { label: 'Icy Fog', icon: '🌫️' }, 51: { label: 'Light Drizzle', icon: '🌦️' }, 53: { label: 'Drizzle', icon: '🌦️' }, 55: { label: 'Heavy Drizzle', icon: '🌧️' }, 61: { label: 'Light Rain', icon: '🌧️' }, 63: { label: 'Rain', icon: '🌧️' }, 65: { label: 'Heavy Rain', icon: '🌧️' }, 71: { label: 'Light Snow', icon: '🌨️' }, 73: { label: 'Snow', icon: '🌨️' }, 75: { label: 'Heavy Snow', icon: '❄️' }, 80: { label: 'Rain Showers', icon: '🌦️' }, 81: { label: 'Rain Showers', icon: '🌦️' }, 82: { label: 'Heavy Showers', icon: '🌧️' }, 95: { label: 'Thunderstorm', icon: '⛈️' }, 96: { label: 'Thunderstorm', icon: '⛈️' }, 99: { label: 'Severe Thunderstorm', icon: '⛈️' } };
+        const info = wmoMap[code] || { label: 'Varied', icon: '🌤️' };
+        document.getElementById('weatherIconCell').textContent = info.icon;
+        document.getElementById('weatherCondition').textContent = info.label;
+        document.getElementById('weatherTempRow').textContent = `${high}°F / ${low}°F · ${precip === 0 ? 'No rain' : precip + '" rain'}`;
+      } catch (e) {
+        document.getElementById('weatherCondition').textContent = 'Weather unavailable';
+      }
+    }
+    fetchWeather();
+
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; document.getElementById('guestName').focus(); }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+    function closeModalOnOverlay(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+
+    async function submitRSVP() {
+      const name = document.getElementById('guestName').value.trim();
+      if (!name) { document.getElementById('guestName').focus(); return; }
+      const attending = document.getElementById('attendStatus').value;
+      const guests = document.getElementById('guestCount').value;
+      const dietary = document.getElementById('dietary').value;
+      const message = document.getElementById('message').value.trim();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending…'; btn.disabled = true;
+      try {
+        const res = await fetch('/api/rsvp', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, attending, guests, dietary, message }) });
+        if (!res.ok) throw new Error('Failed');
+      } catch (e) {
+        const waText = encodeURIComponent(`RSVP for Abhiram's Annaprashan\n\nName: ${name}\nAttending: ${attending === 'yes' ? '✅ Joyfully Accept' : '❌ Regretfully Decline'}\nGuests: ${guests}\nDietary: ${dietary}\nMessage: ${message || 'None'}`);
+        window.open(`https://wa.me/14254996281?text=${waText}`, '_blank');
+      }
+      document.getElementById('rsvpForm').style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+      setTimeout(closeModal, 3000);
+    }
+  </script>
+</body>
+</html>
